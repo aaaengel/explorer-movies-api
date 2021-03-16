@@ -6,6 +6,7 @@ const routes = require("./routes/index");
 const errorHandler = require("./middlewares/errorHandler")
 const { errorLogger } = require("./middlewares/logger");
 const { errors } = require('celebrate');
+const helmet = require('helmet');
 
 const { PORT = 3000 } = process.env;
 
@@ -18,6 +19,7 @@ mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
+app.use(helmet())
 app.use(errorLogger);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
