@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable consistent-return */
 const { CelebrateError } = require('celebrate');
 
 const errorHandler = (err, req, res, next) => {

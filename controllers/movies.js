@@ -43,7 +43,7 @@ const deleteMovieById = (req, res, next) => {
         return next(new NotFound('movie undefined'));
       }
       if (!movie.owner.equals(req.user._id)) {
-        return next(new Forbidden('Нет прав на удаление чужой карточки'));
+        return next(new Forbidden('Нет прав на удаление чужого фильма'));
       }
       Movie.findByIdAndRemove(req.params.id)
         .then((deletedMovie) => res.status(200).send({ data: deletedMovie }))

@@ -27,7 +27,12 @@ const register = (req, res, next) => {
       };
       res.send({ data: newUser });
     })
-    .catch(next);
+    .catch(err => {
+      if (err.name === 'ValidationError') {
+        return next(new BadRequest('invalid data'));
+      }
+      return next(new ServerError('server error'));
+    });
 };
 
 const auth = (req, res, next) => {

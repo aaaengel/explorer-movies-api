@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+
 const { celebrate, Joi } = require('celebrate');
 const validator = require('validator');
 

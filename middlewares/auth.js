@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config');
 const { Forbidden } = require('../errors');
