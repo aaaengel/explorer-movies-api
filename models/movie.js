@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const isURL = require('validator/lib/isURL');
+
 const movieSchema = new mongoose.Schema({
   country: {
     type: String,
@@ -31,7 +32,7 @@ const movieSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    required:true,
+    required: true,
     validate: {
       validator(v) {
         return isURL(v);

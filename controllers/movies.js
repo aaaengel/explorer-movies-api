@@ -1,4 +1,4 @@
-const Movie = require("../models/movie");
+const Movie = require('../models/movie');
 const {
   NotFound,
   BadRequest,
@@ -7,7 +7,7 @@ const {
 } = require('../errors');
 
 const returnMovies = (req, res, next) => {
-const owner = req.user._id;
+  const owner = req.user._id;
 
   Movie.find({ owner }).then((movies) => {
     if (!movies.length) {
@@ -24,9 +24,10 @@ const owner = req.user._id;
 };
 
 const createMovie = (req, res, next) => {
-  const owner = req.user._id
-  const { country, director, duration, year, description, image, trailer, nameRU, nameEN, thumbnail  } = req.body;
-  Movie.create({ country, director, duration, year, description, image, trailer, nameRU, nameEN, thumbnail, owner})
+  const owner = req.user._id;
+  Movie.create({
+    owner, ...req.body,
+  })
     .then((card) => res.send({ data: card }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -45,7 +46,7 @@ const deleteMovieById = (req, res, next) => {
       if (!movie.owner.equals(req.user._id)) {
         return next(new Forbidden('Нет прав на удаление чужого фильма'));
       }
-      movie.remove()
+      movie.remove();
       return next();
     })
     .catch((err) => {
@@ -59,5 +60,5 @@ const deleteMovieById = (req, res, next) => {
 module.exports = {
   returnMovies,
   createMovie,
-  deleteMovieById
-}
+  deleteMovieById,
+};

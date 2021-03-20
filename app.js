@@ -2,24 +2,25 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const routes = require("./routes/index");
-const errorHandler = require("./middlewares/errorHandler")
-const { errorLogger } = require("./middlewares/logger");
 const { errors } = require('celebrate');
 const helmet = require('helmet');
+const routes = require('./routes/index');
+const errorHandler = require('./middlewares/errorHandler');
+const { errorLogger } = require('./middlewares/logger');
+const { MONGO_DB_ADDRESS } = require('./config');
 
 const { PORT = 3000 } = process.env;
 
 const app = express();
 
 app.use(cors());
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
+mongoose.connect(MONGO_DB_ADDRESS, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
-app.use(helmet())
+app.use(helmet());
 app.use(errorLogger);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,11 +30,10 @@ app.use((err, req, res, next) => {
   } if (err.name === 'MongooseError') {
     return (res.status(500).send({ message: 'server error' }));
   }
- res.status(err.status).send({ message: err.message})
-  return next();
+  return next(res.status(err.status).send({ message: err.message }));
 });
-app.use('/', routes);
+app.use('/api', routes);
 
-app.use(errors())
-app.use(errorHandler)
+app.use(errors());
+app.use(errorHandler);
 app.listen(PORT);

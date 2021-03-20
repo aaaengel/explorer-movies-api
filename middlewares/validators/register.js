@@ -1,4 +1,3 @@
-
 const { celebrate, Joi } = require('celebrate');
 const validator = require('validator');
 
@@ -21,7 +20,7 @@ const register = celebrate({
         'string.max': 'Максимум 30 символов',
         'any.required': 'Обязательное поле',
       }),
-      name: Joi.string().min(2).max(30).required()
+    name: Joi.string().min(2).max(30).required()
       .messages({
         'string.min': 'Минимум 2 символа',
         'string.max': 'Максимум 30 символов',

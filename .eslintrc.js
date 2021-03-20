@@ -15,5 +15,4 @@ module.exports = {
     'no-console': 'off',
     'no-underscore-dangle': ['error', { allow: ['_id'] }],
   },
-
 };

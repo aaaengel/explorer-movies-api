@@ -4,18 +4,17 @@ const {
   ServerError,
 } = require('../errors');
 
-
-const returnMe = (req, res, next) =>{
+const returnMe = (req, res, next) => {
   User.findById(req.user._id._id)
     .then((user) => res.send({
       email: user.email,
-      name: user.name
+      name: user.name,
     })).catch((err) => {
       next(err);
     });
-}
+};
 
-const updateUser = (req, res, next) =>{
+const updateUser = (req, res, next) => {
   const { name, about } = req.body;
   User.findByIdAndUpdate(
     req.user._id,
@@ -40,9 +39,9 @@ const updateUser = (req, res, next) =>{
     }
     return next(new ServerError('server error'));
   });
-}
+};
 
 module.exports = {
   returnMe,
-  updateUser
-}
+  updateUser,
+};

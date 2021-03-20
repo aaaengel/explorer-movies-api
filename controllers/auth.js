@@ -1,7 +1,9 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const { Unauthorized, Conflict } = require('../errors');
+const {
+  Unauthorized, Conflict, BadRequest, ServerError,
+} = require('../errors');
 const { JWT_SECRET, JWT_TTL } = require('../config');
 
 const register = (req, res, next) => {
@@ -12,12 +14,12 @@ const register = (req, res, next) => {
   User.findOne({ email })
     .then((user) => {
       if (user) {
-        throw new Conflict('email уже используется');
+        return next(Conflict('email уже используется'));
       }
       return bcrypt.hash(password, 10);
     })
-    .then((password) => User.create({
-      email, password, name,
+    .then((hash) => User.create({
+      email, hash, name,
     }))
     .then((user) => {
       const newUser = {
@@ -27,7 +29,7 @@ const register = (req, res, next) => {
       };
       res.send({ data: newUser });
     })
-    .catch(err => {
+    .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequest('invalid data'));
       }
