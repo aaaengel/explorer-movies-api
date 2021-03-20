@@ -32,7 +32,7 @@ app.use((err, req, res, next) => {
   }
   return next(res.status(err.status).send({ message: err.message }));
 });
-app.use('/api', routes);
+app.use('/', routes);
 
 app.use(errors());
 app.use(errorHandler);
