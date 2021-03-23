@@ -14,12 +14,12 @@ const register = (req, res, next) => {
   User.findOne({ email })
     .then((user) => {
       if (user) {
-        return next(Conflict('email уже используется'));
+        return next(new Conflict('email уже используется'));
       }
       return bcrypt.hash(password, 10);
     })
     .then((hash) => User.create({
-      email, hash, name,
+      email, password: hash, name,
     }))
     .then((user) => {
       const newUser = {
@@ -33,7 +33,7 @@ const register = (req, res, next) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequest('invalid data'));
       }
-      return next(new ServerError('server error'));
+      return next(new ServerError(err.message));
     });
 };
 

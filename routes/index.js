@@ -5,7 +5,7 @@ const authRouter = require('./auth');
 const authMiddleware = require('../middlewares/auth');
 const { NotFound } = require('../errors');
 
-routes.use('/auth', authRouter);
+routes.use('/', authRouter);
 
 routes.use('/users', authMiddleware, usersRouter);
 
