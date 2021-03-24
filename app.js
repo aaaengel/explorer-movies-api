@@ -21,7 +21,7 @@ mongoose.connect(MONGO_DB_ADDRESS, {
   useUnifiedTopology: true,
 });
 app.use(helmet());
-app.use(errorLogger);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use((err, req, res, next) => {
@@ -32,8 +32,8 @@ app.use((err, req, res, next) => {
   }
   return next(res.status(err.status).send({ message: err.message }));
 });
-app.use(errorHandler);
 app.use('/', routes);
-
+app.use(errorLogger);
+app.use(errorHandler);
 app.use(errors());
 app.listen(PORT);

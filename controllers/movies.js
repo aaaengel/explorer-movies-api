@@ -43,7 +43,7 @@ const deleteMovieById = (req, res, next) => {
       if (!movie) {
         return next(new NotFound('movie undefined'));
       }
-      if (!movie.owner.equals(req.user._id)) {
+      if (!movie.owner.equals(req.user._id._id)) {
         return next(new Forbidden('Нет прав на удаление чужого фильма'));
       }
       movie.remove();
@@ -51,7 +51,9 @@ const deleteMovieById = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        return next(new BadRequest('invalid data'));
+        return next(new BadRequest(err.message));
+      } if (err.name === 'ValidationError') {
+        return next(new BadRequest(err.message));
       }
       return next(new ServerError('server error'));
     });
