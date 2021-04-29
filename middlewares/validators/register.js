@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* eslint-disable import/no-extraneous-dependencies */
+=======
+>>>>>>> a4317b22e718ea67ebfac3f16cb056e3f6630b4a
 const { celebrate, Joi } = require('celebrate');
 const validator = require('validator');
 
@@ -21,7 +24,11 @@ const register = celebrate({
         'string.max': 'Максимум 30 символов',
         'any.required': 'Обязательное поле',
       }),
+<<<<<<< HEAD
       name: Joi.string().min(2).max(30).required()
+=======
+    name: Joi.string().min(2).max(30).required()
+>>>>>>> a4317b22e718ea67ebfac3f16cb056e3f6630b4a
       .messages({
         'string.min': 'Минимум 2 символа',
         'string.max': 'Максимум 30 символов',

@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
+<<<<<<< HEAD
 const validator = require("validator")
+=======
+const validator = require('validator');
+>>>>>>> a4317b22e718ea67ebfac3f16cb056e3f6630b4a
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -24,4 +28,8 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
 });
+<<<<<<< HEAD
 module.exports = mongoose.model('User', userSchema);
+=======
+module.exports = mongoose.model('User', userSchema);
+>>>>>>> a4317b22e718ea67ebfac3f16cb056e3f6630b4a

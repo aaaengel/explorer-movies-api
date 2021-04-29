@@ -4,9 +4,14 @@
   "description": "Yandex-praktikum diploma",
   "main": ".eslintrc.js",
   "dependencies": {
+<<<<<<< HEAD
     "package.json": "^2.0.1"
-  },
-  "devDependencies": {
+=======
+    "airbnb": "0.0.2",
+    "eslint-plugin-markdown": "^2.0.0",
+    "helmet": "^4.4.1",
+    "package.json": "^2.0.1",
+    "save-dev": "0.0.1-security",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "celebrate": "^13.0.4",
@@ -18,11 +23,36 @@
     "nodemon": "^2.0.7",
     "validator": "^13.5.2",
     "winston": "^3.3.3"
+>>>>>>> a4317b22e718ea67ebfac3f16cb056e3f6630b4a
+  },
+  "devDependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "celebrate": "^13.0.4",
+    "cors": "^2.8.5",
+<<<<<<< HEAD
+=======
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+>>>>>>> a4317b22e718ea67ebfac3f16cb056e3f6630b4a
+    "express": "^4.17.1",
+    "express-winston": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.19",
+    "nodemon": "^2.0.7",
+    "validator": "^13.5.2",
+    "winston": "^3.3.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
+<<<<<<< HEAD
     "dev": "nodemon app.js"
+=======
+    "dev": "nodemon app.js",
+    "eslint": "eslint --fix --ext .js,.jsx ."
+>>>>>>> a4317b22e718ea67ebfac3f16cb056e3f6630b4a
   },
   "repository": {
     "type": "git",

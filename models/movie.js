@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 const mongoose = require("mongoose");
+=======
+const mongoose = require('mongoose');
+const isURL = require('validator/lib/isURL');
+
+>>>>>>> a4317b22e718ea67ebfac3f16cb056e3f6630b4a
 const movieSchema = new mongoose.Schema({
   country: {
     type: String,
@@ -30,7 +36,11 @@ const movieSchema = new mongoose.Schema({
   },
   image: {
     type: String,
+<<<<<<< HEAD
     required:true,
+=======
+    required: true,
+>>>>>>> a4317b22e718ea67ebfac3f16cb056e3f6630b4a
     validate: {
       validator(v) {
         return isURL(v);
@@ -70,4 +80,8 @@ const movieSchema = new mongoose.Schema({
   },
 });
 
+<<<<<<< HEAD
 module.exports = mongoose.model('Movie', movieSchema);
+=======
+module.exports = mongoose.model('Movie', movieSchema);
+>>>>>>> a4317b22e718ea67ebfac3f16cb056e3f6630b4a

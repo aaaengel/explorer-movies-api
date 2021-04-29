@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* eslint-disable import/no-extraneous-dependencies */
+=======
+>>>>>>> a4317b22e718ea67ebfac3f16cb056e3f6630b4a
 const winston = require('winston');
 const expressWinston = require('express-winston');
 

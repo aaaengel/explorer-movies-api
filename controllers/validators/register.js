@@ -23,4 +23,8 @@ const register = celebrate({
   },
 });
 
+<<<<<<< HEAD
 module.exports = register;
+=======
+module.exports = register;
+>>>>>>> a4317b22e718ea67ebfac3f16cb056e3f6630b4a
