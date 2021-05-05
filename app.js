@@ -9,7 +9,7 @@ const errorHandler = require('./middlewares/errorHandler');
 const { errorLogger } = require('./middlewares/logger');
 const { MONGO_DB_ADDRESS } = require('./config');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 
 const app = express();
 
