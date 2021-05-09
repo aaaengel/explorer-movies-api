@@ -40,6 +40,7 @@ const createMovie = (req, res, next) => {
 const deleteMovieById = (req, res, next) => {
   Movie.findById(req.params.movieId)
     .then((movie) => {
+      res.send(movie);
       if (!movie) {
         return next(new NotFound('movie undefined'));
       }
